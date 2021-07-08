@@ -1,5 +1,5 @@
 // console.log("Hello")
-const leftFooter = document.querySelector('leftft')
+const leftFooter = document.querySelector('.leftft')
 // const redirect_uri = 'http://127.0.0.1:5500/index.html';
 
 // const client_id = 'insert here';
@@ -91,10 +91,9 @@ const leftFooter = document.querySelector('leftft')
 let date = new Date(); 
 
 function leftFooterUpdate() {
-    leftFooter.textContent = `Landlording for Life<br / >
-    © 2019-${Date.getFullYear} Landlording for Life Podcast<br>`
+    leftFooter.innerHTML = `Landlording for Life<br / >
+    © 2019-${date.getFullYear()} Landlording for Life Podcast<br>`
 }
 
 leftFooterUpdate();
 
-console.log('end of doc')
