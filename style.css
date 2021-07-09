@@ -37,60 +37,93 @@ body {
   z-index: -2;
 }
 
-header {
+.nav {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.3s ease;
   padding: 30px;
-  /* background-color: aqua; */
   color: rgb(250, 248, 211);
+  width: 100vw;
+  border-bottom: solid 2px rgba(109, 113, 96, 0.9);
+  padding-bottom: 20px;
+  z-index: 1;
 }
-
-header .title {
+.nav .title {
   font-size: 6rem;
   font-weight: bold;
 }
 
-header .title .subtitle {
+.nav .title .subtitle {
   font-weight: 400;
   font-size: 2rem;
   text-align: center;
   margin-top: -30px;
   letter-spacing: 20px;
 }
-
-nav {
-  width: 100vw;
-  border-bottom: solid 2px rgba(109, 113, 96, 0.9);
-  padding-bottom: 20px;
-}
-
-nav ul {
+.nav ul {
   display: flex;
   justify-content: center;
 }
 
-nav ul li {
+.nav ul li {
   list-style: none;
   font-size: 1.5rem;
-  padding: 20px 75px;
+  margin: 20px 35px;
+  padding: 0px 15px;
   color: rgb(250, 248, 211);
-  transition: all 0.5s ease;
+  letter-spacing: 0.2rem;
   cursor: pointer;
-  margin: 0 15px;
 }
 
-nav ul li:hover {
-  color: #fff;
+.nav ul li:hover {
+  color: rgb(255, 255, 255);
+  border-bottom: 1px solid white;
+}
+
+.nav.active {
   background-color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nav.active .title {
+  font-size: 2rem;
+}
+
+.nav.active .subtitle {
+  display: none;
+}
+
+.nav.active ul li {
+  font-size: 1.25rem;
+  padding: 10px 15px;
+  color: rgb(250, 248, 211);
+  margin: 0 10px;
+  cursor: pointer;
+  transition: none;
+}
+
+.nav.active ul li:hover {
+  color: rgb(13, 132, 212);
+  border-bottom: none;
 }
 
 main {
+  position: relative;
+  top: 300px;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 300px;
 }
 
 main .synop {
@@ -170,8 +203,6 @@ main .synop {
 
 footer {
   width: 100%;
-  /* background-color: white; */
-  color: #white;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -190,7 +221,7 @@ footer .rightft {
   padding: 10px;
   height: 50px;
   font-size: 2rem;
-  transition: all 0.25s ease;
+  transition: all 0.15s ease;
 }
 
 a .icon {
@@ -199,12 +230,11 @@ a .icon {
 
 .icon:hover {
   transform: scale(1.1);
-  color: rgb(89, 95, 74);
+  color: rgb(218, 221, 210);
   /* box-shadow: 2px 2px 10px black; */
 }
 
 .podcast-area {
-  /* position: relative; */
   margin: 20px;
   background-color: rgba(153, 153, 153, 0.6);
   display: flex;

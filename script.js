@@ -1,7 +1,26 @@
 const leftFooter = document.querySelector('.leftft')
 const podcastArea = document.querySelector('.podcast-area')
+const nav = document.querySelector('.nav')
+
+
+window.addEventListener('scroll', fixNav)
+
+function fixNav() {
+     console.log(window.scrollY, nav.offsetHeight)
+
+     if(window.scrollY > nav.offsetHeight - 100) {
+          nav.classList.add('active')
+     } else {
+          nav.classList.remove('active')
+     }
+}
+
+
 
 let date = new Date(); 
+
+
+
 
 leftFooter.innerHTML = `Landlording for Life<br>
      © 2019-${date.getFullYear()} Landlording for Life Podcast<br>`
