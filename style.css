@@ -73,17 +73,23 @@ body {
 
 .nav ul li {
   list-style: none;
+
   font-size: 1.5rem;
   margin: 20px 35px;
   padding: 0px 15px;
-  color: rgb(250, 248, 211);
+
   letter-spacing: 0.2rem;
   cursor: pointer;
 }
 
-.nav ul li:hover {
+.nav ul li a {
+  text-decoration: none;
+  color: rgb(250, 248, 211);
+}
+
+.nav ul li :hover {
   color: rgb(255, 255, 255);
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgb(250, 248, 211);
 }
 
 .nav.active {
@@ -235,15 +241,19 @@ a .icon {
 }
 
 .podcast-area {
-  margin: 20px;
+  margin-bottom: 20px;
   background-color: rgba(153, 153, 153, 0.6);
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  width: 50vw;
 }
 
+.podcast-area .title {
+  margin: 10px 0 0 20px;
+  font-size: 2rem;
+}
 .podcast-area .podcast {
-  margin: 20px;
+  margin: 10px 50px;
   background-color: beige;
   padding: 5px;
   display: flex;
@@ -254,7 +264,7 @@ a .icon {
 .podcast .title {
   text-align: center;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 1.75rem;
   color: #333;
   letter-spacing: -0.05rem;
 }
@@ -264,7 +274,6 @@ a .icon {
   align-items: center;
   padding: 20px;
   color: #000;
-  font-size: 1rem;
 }
 
 .podcast .content img {
@@ -278,11 +287,34 @@ a .icon {
 .podcast p {
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  text-align: center;
+  font-size: 1rem;
   padding: 20px;
   color: #333;
 }
 
-.podcast .media-player {
-  width: 90%;
+#player {
+  width: 70%;
+  filter: drop-shadow(2px 3px 3px #333);
+}
+
+.about {
+  width: 50vw;
+  font-size: 1.25rem;
+  background-color: rgba(153, 153, 153, 0.6);
+  padding: 20px;
+  margin: 50px;
+}
+
+.about .content {
+  display: flex;
+}
+.about img {
+  display: flex;
+  height: 200px;
+  border-radius: 50%;
+  margin: 15px;
+  padding: 5px;
+  background-color: rgba(153, 153, 153, 0.6);
+  box-shadow: 2px 2px 5px #333;
 }
