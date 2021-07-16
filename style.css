@@ -32,7 +32,7 @@ body {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(109, 113, 96, 0.9);
+  background-color: hsla(74, 8%, 41%, 0.95);
   background-size: cover;
   z-index: -2;
 }
@@ -50,11 +50,13 @@ body {
   padding: 30px;
   color: rgb(250, 248, 211);
   width: 100vw;
-  border-bottom: solid 2px rgba(109, 113, 96, 0.9);
-  padding-bottom: 20px;
+  /* border-bottom: solid 1px rgba(109, 113, 96, 0.9); */
   z-index: 1;
 }
+
 .nav .title {
+  display: flex;
+  flex-direction: column;
   font-size: 6rem;
   font-weight: bold;
 }
@@ -66,28 +68,29 @@ body {
   margin-top: -30px;
   letter-spacing: 20px;
 }
-.nav ul {
+
+.nav .menu ul {
   display: flex;
+  width: 100%;
+  visibility: visible;
   justify-content: center;
 }
 
-.nav ul li {
+.nav .menu ul li {
   list-style: none;
-
   font-size: 1.5rem;
   margin: 20px 35px;
   padding: 0px 15px;
-
   letter-spacing: 0.2rem;
   cursor: pointer;
 }
 
-.nav ul li a {
+.nav .menu ul li a {
   text-decoration: none;
   color: rgb(250, 248, 211);
 }
 
-.nav ul li :hover {
+.nav .menu ul li :hover {
   color: rgb(255, 255, 255);
   border-bottom: 1px solid rgb(250, 248, 211);
 }
@@ -119,6 +122,25 @@ body {
 .nav.active ul li:hover {
   color: rgb(13, 132, 212);
   border-bottom: none;
+}
+
+.nav .toggle {
+  position: absolute;
+  top: 35px;
+  right: 10%;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40px;
+  width: 50px;
+  cursor: pointer;
+}
+
+.nav .toggle .bar {
+  height: 5px;
+  width: 50px;
+  background-color: rgb(218, 221, 210);
+  border-radius: 2px;
 }
 
 main {
@@ -267,6 +289,7 @@ a .icon {
   font-size: 1.75rem;
   color: #333;
   letter-spacing: -0.05rem;
+  margin-bottom: -20px;
 }
 
 .podcast .content {
@@ -290,7 +313,7 @@ a .icon {
   text-align: center;
   font-size: 1rem;
   padding: 20px;
-  color: #333;
+  color: hsl(0, 0%, 20%);
 }
 
 #player {
@@ -325,4 +348,61 @@ a .icon {
 
 .text p {
   margin: 30px;
+}
+
+@media screen and (max-width: 1275px) {
+  .nav .title {
+    font-size: 4rem;
+  }
+
+  .nav .title .subtitle {
+    font-size: 1rem;
+    margin-top: -20px;
+  }
+
+  .podcast-area {
+    width: 75vw;
+  }
+
+  .podcast-area .title {
+    font-size: 1.75rem;
+  }
+
+  .podcast .title {
+    font-size: 1.5rem;
+  }
+
+  .podcast .content img {
+    height: 125px;
+  }
+
+  #player {
+    width: 75%;
+  }
+
+  .about {
+    width: 75vw;
+    font-size: 1.25rem;
+    background-color: rgba(153, 153, 153, 0.6);
+    padding: 5px;
+    margin: 50px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .podcast .content img {
+    display: none;
+  }
+
+  .about {
+    width: 75vw;
+    font-size: 1.25rem;
+    background-color: rgba(153, 153, 153, 0.6);
+    padding: 5px;
+    margin: 50px;
+  }
+  .about .content {
+    display: flex;
+    flex-direction: column;
+  }
 }

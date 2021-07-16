@@ -1,20 +1,81 @@
 const leftFooter = document.querySelector('.leftft')
 const podcastArea = document.querySelector('.podcast-area')
 const nav = document.querySelector('.nav')
+const toggleBtn = document.querySelector('.toggle')
+const menu = document.querySelector('.menu ul')
+const main = document.querySelector('main')
+const navActive = document.querySelector('.nav.active')
 
 
-window.addEventListener('scroll', fixNav)
+window.addEventListener('load', navLoad)
+window.addEventListener('scroll', navScroll)
+window.onresize = reportWindowSize;
 
-function fixNav() {
-     console.log(window.scrollY, nav.offsetHeight)
-
-     if(window.scrollY > nav.offsetHeight - 100) {
-          nav.classList.add('active')
-     } else {
-          nav.classList.remove('active')
-     }
+function navLoad() {
+     if (window.innerWidth < 950) {
+          toggleButton();
+     } 
 }
 
+
+function reportWindowSize() {
+     let winX = window.innerWidth
+     if(winX < 950) {
+          toggleButton()
+     } else {
+          removeToggle()
+          nav.style.flexDirection = 'column'
+          
+     } 
+     console.log(winX)
+
+   }
+   
+console.log(window.innerWidth)
+
+function navScroll() {
+    if (window.innerWidth > 950) {
+         if (window.scrollY > nav.offsetHeight - 100) {
+              nav.classList.add('active')
+              nav.style.flexDirection = 'row'
+         } else {
+             nav.classList.remove('active') 
+             nav.style.flexDirection = 'column'
+         }
+     } 
+    
+}
+
+
+
+function toggleButton() {
+    nav.classList.add('active')
+    toggleBtn.style.display = 'flex'
+    menu.style.display = 'none'
+     
+}
+
+function removeToggle() {
+     toggleBtn.style.display = 'none'
+     menu.style.display = 'flex'
+     menu.style.flexDirection = 'row'
+}
+
+
+
+toggleBtn.addEventListener('click', function() {
+    if (menu.style.display === 'none') {
+         menu.style.display = 'flex'
+         menu.style.flexDirection = 'column'
+         menu.style.textAlign = 'center'
+         nav.style.flexDirection = "column"
+    } else {
+         menu.style.display = 'none'
+         menu.style.flexDirection = 'row'
+     //     nav.style.flexDirection = "row"
+    
+    }
+})
 
 
 let date = new Date(); 
@@ -31,31 +92,11 @@ let API_URL = `https://soundcloud.com/oembed?format=json&url=`
 let link = 'https://soundcloud.com/sean-morrissey-899912223/van-sturgeon-how-to-save-30-to-50-in-renovation-costs'
 
 
-// async function grabShow(url) {
-//      let show;
-//      const API_URL = `https://soundcloud.com/oembed?format=json&url=`
-     
-//      await fetch(API_URL + url)
-//      .then (res => res.json()) 
-//      .then (data => show = data)
 
-//      const showURL = show.html
-//      const visualIndex = show.html.indexOf('visual')+7
-//      const srcIndex = show.html.indexOf('src')+5
-//      const showLink = showURL.slice(srcIndex, (showURL.length-11)).replaceAll('true', 'false')
-//      // return show;
-//      console.log(show)
-//      console.log(show.html)
-//      console.log(showLink)
-//      // show.link = showLink;
-//      show.link = `<iframe width="100%" height="100" scrolling="no" frameborder="yes" src="${showLink}"></iframe>`
-//      displayPodcast(show)
-     
-// }
 
 
 async function grabShow() {
-     // let show;
+
      const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ffeeds.soundcloud.com%2Fusers%2Fsoundcloud%3Ausers%3A220588129%2Fsounds.rss`
      
      await fetch(API_URL)
@@ -65,15 +106,12 @@ async function grabShow() {
      let total = shows.length
      let count = 0
      let sortedShows = []
-// console.log(shows)
+
      for (i=0; i<shows.length; i++) {
           sortedShows.push(shows[i])
      }
-     console.log(sortedShows)
-
      
      sortedShows.forEach(show => {
-       
           displayPodcast(show)
      })
     
